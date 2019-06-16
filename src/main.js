@@ -3,8 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import SuiVue from 'semantic-ui-vue';
+import axios from 'axios'
 
 Vue.config.productionTip = false
+Vue.use(SuiVue);
+
+// axios.defaults.withCredentials = true
+// axios.defaults.baseURL = 'http://localhost:3000'
 
 /* eslint-disable no-new */
 new Vue({
