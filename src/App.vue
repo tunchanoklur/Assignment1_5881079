@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <sui-menu inverted>
+      <sui-menu-item header><img src="./assets/logo.png"></sui-menu-item>
+      <a is="sui-menu-item" style="font-size:18px;">Contacts</a>
+      <sui-menu-menu is="sui-menu-menu" position="right">
+        <div is="sui-menu-item"> <sui-icon name="user"/></div>
+      </sui-menu-menu>
+    </sui-menu>
     <router-view/>
   </div>
 </template>
@@ -10,14 +16,3 @@ export default {
   name: 'App'
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
