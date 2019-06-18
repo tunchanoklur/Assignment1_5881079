@@ -16,15 +16,18 @@
               <span style="font-size:15px;"><b>User Account</b></span>
               <sui-input
               type="text"
-              placeholder="User Account"/>
+              placeholder="User Account"
+              v-model="username"/>
             </sui-form-field>
             <sui-form-field>
               <span style="font-size:15px;"><b>Password</b></span>
               <sui-input
               type="password"
-              placeholder="Password"/>
+              placeholder="Password"
+              v-model="password"/>
             </sui-form-field>
-            <sui-button>Login</sui-button>
+            <span v-if="incorrect" style="font-size:15px;color:red;">Incorrect username or password<br><br></span>
+            <sui-button @click="Authorization">Login</sui-button>
         </sui-form>
         </sui-grid-column>
         </sui-grid>
@@ -35,6 +38,19 @@
 
 <script>
 export default {
+  data:function(){
+    return{
+      incorrect:false,
+      username:"",
+      password:""
+    }
+  },
+  methods:{
+    Authorization(){
+      if(this.username==="admin"&&this.password==="admin")this.$router.push('/contacts')
+      else this.incorrect=true;
+    }
+  }
 };
 </script>
 

@@ -9,9 +9,9 @@
                 <b style="font-size:18px;">Contacts</b>
                 </div>
                 <span>
-                    <sui-input style="width:82%;" placeholder="Search..."/>
+                    <sui-input style="width:80%;" placeholder="Search..."/>
                     <sui-button-group>
-                        <sui-button content="Search"/>
+                        <sui-button content="Search" icon="search"/>
                         <sui-button content="Add" icon="add" color="orange"/>
                     </sui-button-group>
                 </span>
@@ -23,8 +23,7 @@
             </sui-card>
             <sui-card style="width:100%;">
                 <sui-card-content>
-                    Add card component
-                <!--card component here-->
+                   <contactcard :data="test" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
                 </sui-card-content>
             </sui-card>
         </sui-grid-column>
@@ -35,7 +34,33 @@
 </template>
 
 <script>
+import contactcard from '@/components/Components/ContactCard'
 export default {
+    components:{contactcard},
+    data:function(){
+        return{
+            test:{
+                id_:"123456",
+                firstName:"Tunchanok",
+                lastName:"Lur",
+                middleName:"kik",
+                gender:"F",
+                email:"kik@gmail.com",
+                mobile:"+66 829999999",
+                facebook:"kik lur"
+            }
+        }  
+    },
+    methods:{
+        edititem(data){
+            console.log("edit")
+            console.log(data)
+        },
+        deleteitem(data){
+            console.log("delete")
+            console.log(data)
+        }
+    }
 };
 </script>
 
