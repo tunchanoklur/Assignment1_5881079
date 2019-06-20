@@ -34,7 +34,20 @@
         </sui-grid-column>
         </sui-grid>
       </sui-card-content>
-    </sui-card> 
+    </sui-card>
+    <!-- delete modal -->
+    <sui-modal v-model="show_modal">
+      <sui-modal-header>Contact Delete Confirmation</sui-modal-header>
+      <sui-modal-content image>
+        <sui-modal-description>
+          <div style="font-size:18px;">Would you like to delete the contact?</div>
+        </sui-modal-description>
+      </sui-modal-content>
+      <sui-modal-actions>
+        <sui-button @click="confirmDelete" color="positive">Yes</sui-button>
+        <sui-button @click="show_modal=false">No</sui-button>
+      </sui-modal-actions>
+    </sui-modal>
   </div>
 </template>
 
@@ -48,12 +61,13 @@ export default {
                 id_:"123456",
                 firstName:"Tunchanok",
                 lastName:"Lur",
-                middleName:"kik",
-                gender:"F",
                 email:"kik@gmail.com",
-                mobile:"+66 829999999",
-                facebook:"kik lur"
-            }
+                mobileNo:"+66 829999999",
+                facebook:"kik lur",
+                imageUrl:"https://semantic-ui-vue.github.io/static/images/avatar/large/kristy.png",
+            },
+            show_modal:false,
+            deletedata:{}
         }  
     },
     methods:{
@@ -77,6 +91,11 @@ export default {
         deleteitem(data){
             console.log("delete")
             console.log(data)
+            this.show_modal = true
+            this.deletedata = data
+        },
+        confirmDelete(){
+            this.show_modal = false
         }
     }
 };
