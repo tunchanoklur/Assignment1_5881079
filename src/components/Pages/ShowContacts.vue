@@ -12,7 +12,7 @@
                     <sui-input style="width:80%;" placeholder="Search..."/>
                     <sui-button-group>
                         <sui-button content="Search" icon="search"/>
-                        <sui-button content="Add" icon="add" color="orange"/>
+                        <sui-button content="Add" icon="add" color="orange" @click="$router.push('/addcontact')"/>
                     </sui-button-group>
                 </span>
             </sui-segment>
@@ -23,7 +23,12 @@
             </sui-card>
             <sui-card style="width:100%;">
                 <sui-card-content>
-                   <contactcard :data="test" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
+                    <sui-card-group :items-per-row="4">
+                        <contactcard :data="test" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
+                        <contactcard :data="test" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
+                        <contactcard :data="test" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
+                        <contactcard :data="test" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
+                    </sui-card-group>
                 </sui-card-content>
             </sui-card>
         </sui-grid-column>
@@ -55,6 +60,19 @@ export default {
         edititem(data){
             console.log("edit")
             console.log(data)
+            let tmp = {
+                path:'/editcontact',
+                params:{
+                    data:data
+                }
+            }
+            console.log(tmp)
+            this.$router.push({
+                path:'/editcontact',
+                query:{
+                    data:data
+                }
+            })
         },
         deleteitem(data){
             console.log("delete")

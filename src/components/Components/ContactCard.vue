@@ -1,10 +1,10 @@
 <template lang="html">
-  <div class="background">
     <sui-card>
-        <sui-image src="https://semantic-ui-vue.github.io/static/images/avatar/large/kristy.png" />
+        <sui-image v-if="true" src="https://semantic-ui-vue.github.io/static/images/avatar/large/kristy.png"/>
+        <sui-image v-else src="https://semantic-ui-vue.github.io/static/images/wireframes/image.png"/>
         <sui-card-content>
             <sui-container text-align="center">
-                <sui-card-header style="font-size:19px;"><b>{{data.firstName}} {{data.middleName}} {{data.lastName}}</b></sui-card-header>
+                <sui-card-header style="font-size:19px;"><b>{{data.firstName}} {{data.lastName}}</b></sui-card-header>
                 <sui-card-meta>Mobile: {{data.mobile}}</sui-card-meta>
                 <sui-card-meta>Email: {{data.email}}</sui-card-meta>
                 <sui-card-meta>Facebook: {{data.facebook}}</sui-card-meta>
@@ -17,7 +17,6 @@
             </sui-container>
         </sui-card-content>
       </sui-card>
-    </div>
 </template>
 <script>
 export default {
