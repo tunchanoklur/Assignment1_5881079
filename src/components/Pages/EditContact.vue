@@ -43,12 +43,14 @@
         </sui-grid>
       </sui-card-content>
       <sui-card-content>
+          <br>
             <sui-grid textAlign="center">
                 <sui-button-group>
                     <sui-button color="blue" content="Save" icon="save" basic/>
                     <sui-button color="blue" content="Close" icon="close icon" basic @click="$router.push('/contacts')"/>
                 </sui-button-group>
             </sui-grid>
+            <br>
         </sui-card-content>
     </sui-card> 
   </div>

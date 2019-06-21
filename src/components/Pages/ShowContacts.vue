@@ -24,10 +24,7 @@
             <sui-card style="width:100%;">
                 <sui-card-content>
                     <sui-card-group :items-per-row="4">
-                        <contactcard :data="test" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
-                        <contactcard :data="test" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
-                        <contactcard :data="test" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
-                        <contactcard :data="test" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
+                        <contactcard v-for="data in datas" :key="data.id_" :data="data" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
                     </sui-card-group>
                 </sui-card-content>
             </sui-card>
@@ -36,7 +33,7 @@
       </sui-card-content>
     </sui-card>
     <!-- delete modal -->
-    <sui-modal v-model="show_modal">
+    <sui-modal v-model="show_modal" :closable="false">
       <sui-modal-header>Contact Delete Confirmation</sui-modal-header>
       <sui-modal-content image>
         <sui-modal-description>
@@ -44,43 +41,42 @@
         </sui-modal-description>
       </sui-modal-content>
       <sui-modal-actions>
-        <sui-button @click="confirmDelete" color="positive">Yes</sui-button>
-        <sui-button @click="show_modal=false">No</sui-button>
+        <sui-button @click="confirmDelete" positive>Yes</sui-button>
+        <sui-button @click="show_modal=false;deletedata={};">No</sui-button>
       </sui-modal-actions>
     </sui-modal>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import contactcard from '@/components/Components/ContactCard'
 export default {
     components:{contactcard},
     data:function(){
         return{
-            test:{
-                id_:"123456",
-                firstName:"Tunchanok",
-                lastName:"Lur",
-                email:"kik@gmail.com",
-                mobileNo:"+66 829999999",
-                facebook:"kik lur",
-                imageUrl:"https://semantic-ui-vue.github.io/static/images/avatar/large/kristy.png",
-            },
+            datas:[],
             show_modal:false,
             deletedata:{}
         }  
     },
+    beforeMount(){
+        this.getdata();
+    },
     methods:{
+        getdata(){
+            let self = this
+            axios.get('/contacts/getMany')
+            .then(function(res){
+                if(res){
+                    // console.log(res)
+                    self.datas = res.data
+                }
+            })   
+        },
         edititem(data){
             console.log("edit")
             console.log(data)
-            let tmp = {
-                path:'/editcontact',
-                params:{
-                    data:data
-                }
-            }
-            console.log(tmp)
             this.$router.push({
                 path:'/editcontact',
                 query:{
@@ -96,6 +92,14 @@ export default {
         },
         confirmDelete(){
             this.show_modal = false
+            // let self = this
+            // axios.get('/contacts/getMany')
+            // .then(function(res){
+            //     if(res){
+            //         // console.log(res)
+            //         self.datas = res.data
+            //     }
+            // })   
         }
     }
 };

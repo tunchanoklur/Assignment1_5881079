@@ -10,7 +10,8 @@ Vue.config.productionTip = false
 Vue.use(SuiVue);
 
 // axios.defaults.withCredentials = true
-// axios.defaults.baseURL = 'http://localhost:3000'
+//default route for axios
+axios.defaults.baseURL = 'http://localhost:3000'
 
 /* eslint-disable no-new */
 new Vue({
