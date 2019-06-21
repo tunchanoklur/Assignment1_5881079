@@ -6,8 +6,8 @@
             <sui-container text-align="center">
                 <sui-card-header style="font-size:19px;"><b>{{data.firstName}} {{data.lastName}}</b></sui-card-header>
                 <sui-card-meta>Mobile: {{data.mobileNo}}</sui-card-meta>
-                <sui-card-meta>Email: {{data.email}}</sui-card-meta>
-                <sui-card-meta>Facebook: {{data.facebook}}</sui-card-meta>
+                <sui-card-meta>Email: {{data.email===""?"-":data.email}}</sui-card-meta>
+                <sui-card-meta>Facebook: {{data.facebook===""?"-":data.facebook}}</sui-card-meta>
             </sui-container>
         </sui-card-content>
         <sui-card-content extra>
