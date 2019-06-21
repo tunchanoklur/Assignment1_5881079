@@ -90,16 +90,14 @@ export default {
             this.show_modal = true
             this.deletedata = data
         },
-        confirmDelete(){
+        async confirmDelete(){
+            console.log("confirm delete")
             this.show_modal = false
-            // let self = this
-            // axios.get('/contacts/getMany')
-            // .then(function(res){
-            //     if(res){
-            //         // console.log(res)
-            //         self.datas = res.data
-            //     }
-            // })   
+            await axios.post('/contacts/delete',this.deletedata)
+            this.deletedata = {}
+            console.log("done delete")
+            this.getdata()
+            console.log("done get data")
         }
     }
 };

@@ -1,6 +1,6 @@
 <template lang="html">
     <sui-card>
-        <sui-image v-if="true" :src="data.imageUrl"/>
+        <sui-image v-if="data.imageUrl!==''" :src="data.imageUrl"/>
         <sui-image v-else src="https://semantic-ui-vue.github.io/static/images/wireframes/image.png"/>
         <sui-card-content>
             <sui-container text-align="center">
