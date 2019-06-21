@@ -9,7 +9,7 @@
                 <b style="font-size:18px;">Contacts</b>
                 </div>
                 <span>
-                    <sui-input style="width:80%;" placeholder="Search..."/>
+                    <sui-input style="width:80%;" placeholder="Search..." v-model="search"/>
                     <sui-button-group>
                         <sui-button content="Search" icon="search"/>
                         <sui-button content="Add" icon="add" color="orange" @click="$router.push('/addcontact')"/>
@@ -24,7 +24,7 @@
             <sui-card style="width:100%;">
                 <sui-card-content>
                     <sui-card-group :items-per-row="4">
-                        <contactcard v-for="data in datas" :key="data.id_" :data="data" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
+                        <contactcard v-for="data in datas_computed" :key="data.id_" :data="data" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
                     </sui-card-group>
                 </sui-card-content>
             </sui-card>
@@ -57,11 +57,19 @@ export default {
         return{
             datas:[],
             show_modal:false,
-            deletedata:{}
+            deletedata:{},
+            search:""
         }  
     },
     beforeMount(){
         this.getdata();
+    },
+    computed:{
+        datas_computed(){
+            return this.datas.filter((data) => {
+                return this.search.toLowerCase().split(' ').every(v => data.firstName.toLowerCase().includes(v)||data.lastName.toLowerCase().includes(v));
+            });
+        }
     },
     methods:{
         getdata(){
