@@ -7,7 +7,7 @@
         <div is="sui-menu-item"> <sui-icon name="user"/></div>
       </sui-menu-menu>
     </sui-menu>
-    <router-view/>
+      <router-view/>
   </div>
 </template>
 

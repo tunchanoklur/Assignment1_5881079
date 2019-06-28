@@ -9,7 +9,7 @@
                 <b style="font-size:18px;">Contacts</b>
                 </div>
                 <span>
-                    <sui-input style="width:80%;" placeholder="Search..." v-model="search"/>
+                    <sui-input placeholder="Search..." style="width:80%;" v-model="search"/>
                     <sui-button-group>
                         <sui-button content="Search" icon="search"/>
                         <sui-button content="Add" icon="add" color="orange" @click="$router.push('/addcontact')"/>

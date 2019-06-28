@@ -1,6 +1,8 @@
 <template lang="html">
-  <div class="background">
-    <sui-card class="centered" style="width:25%;">
+ <div class="container">
+ <div class="row justify-content-md-center">
+   <div class="col-12">
+    <sui-card>
       <sui-card-content>
         <sui-grid :columns="1">
             <sui-grid-column>
@@ -33,7 +35,9 @@
         </sui-grid>
       </sui-card-content>
     </sui-card> 
+    </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -61,5 +65,8 @@ export default {
 }
 .ui.segment {
     border-top: 3px solid #5DBCD2;
+}
+.ui.card, .ui.cards>.card {
+  width: auto;
 }
 </style>
