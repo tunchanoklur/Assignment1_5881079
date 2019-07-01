@@ -27,24 +27,26 @@
                         <contactcard v-for="data in datas_computed" :key="data.id_" :data="data" @edititem="edititem" @deleteitem="deleteitem"></contactcard>
                     </sui-card-group>
                 </sui-card-content>
+                <sui-card-content>
+                    <sui-modal v-model="show_modal" :closable="false" size="small">
+                        <sui-modal-header>Contact Delete Confirmation</sui-modal-header>
+                        <sui-modal-content>
+                            <sui-modal-description>
+                            <div style="font-size:18px;">Would you like to delete the contact?</div>
+                            </sui-modal-description>
+                        </sui-modal-content>
+                        <sui-modal-actions>
+                            <sui-button @click="confirmDelete" positive>Yes</sui-button>
+                            <sui-button @click="show_modal=false;deletedata={};">No</sui-button>
+                        </sui-modal-actions>
+                    </sui-modal>
+                </sui-card-content>
             </sui-card>
         </sui-grid-column>
         </sui-grid>
       </sui-card-content>
     </sui-card>
     <!-- delete modal -->
-    <sui-modal v-model="show_modal" :closable="false">
-      <sui-modal-header>Contact Delete Confirmation</sui-modal-header>
-      <sui-modal-content image>
-        <sui-modal-description>
-          <div style="font-size:18px;">Would you like to delete the contact?</div>
-        </sui-modal-description>
-      </sui-modal-content>
-      <sui-modal-actions>
-        <sui-button @click="confirmDelete" positive>Yes</sui-button>
-        <sui-button @click="show_modal=false;deletedata={};">No</sui-button>
-      </sui-modal-actions>
-    </sui-modal>
   </div>
 </template>
 

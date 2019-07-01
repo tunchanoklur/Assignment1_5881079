@@ -1,7 +1,5 @@
 <template lang="html">
  <div class="container">
- <div class="row justify-content-md-center">
-   <div class="col-12">
     <sui-card>
       <sui-card-content>
         <sui-grid :columns="1">
@@ -34,9 +32,7 @@
         </sui-grid-column>
         </sui-grid>
       </sui-card-content>
-    </sui-card> 
-    </div>
-  </div>
+    </sui-card>
 </div>
 </template>
 
