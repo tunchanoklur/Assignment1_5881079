@@ -11,8 +11,8 @@ Vue.use(SuiVue);
 
 // axios.defaults.withCredentials = true
 //default route for axios
-axios.defaults.baseURL = 'http://localhost:3000'
-
+// axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'https://assignment1backend.appspot.com'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
